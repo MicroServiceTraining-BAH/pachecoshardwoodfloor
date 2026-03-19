@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-page:    #faf6f1;
+  --bg-warm:    #f3ebe0;
+  --bg-mid:     #ece0cc;
+  --bg-panel:   #e4d4bc;
+  --bg-dark:    #1e1208;
+
+  /* Brand gold */
+  --gold:       #9a6e28;
+  --gold-light: #c8952a;
+  --gold-muted: rgba(154, 110, 40, 0.15);
+  --gold-border: rgba(154, 110, 40, 0.25);
+
+  /* Text */
+  --text-dark:   #1a1008;
+  --text-body:   #3d2a14;
+  --text-muted:  #7a6040;
+  --text-light:  #f5ede0;
+
+  /* Borders */
+  --border:      rgba(154, 110, 40, 0.2);
+  --border-warm: rgba(154, 110, 40, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-dark);
+  font-family: var(--font-body), "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle wood stripe texture */
+.wood-stripe {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 22px,
+      rgba(0,0,0,0.018) 22px,
+      rgba(0,0,0,0.018) 23px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 8px,
+      rgba(0,0,0,0.012) 8px,
+      rgba(0,0,0,0.012) 9px
+    );
+}
+
+/* Section eyebrow label */
+.section-eyebrow {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Section heading */
+.section-heading {
+  font-family: var(--font-display), "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text-dark);
 }
