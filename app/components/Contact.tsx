@@ -49,13 +49,8 @@ export default function Contact() {
         </div>
 
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "0",
-            border: "1px solid var(--border)",
-          }}
-          className="grid-cols-1 md:grid-cols-2"
+          className="grid md:grid-cols-2"
+          style={{ border: "1px solid var(--border)" }}
         >
           {/* Info side — photo fills top half, info in bottom half */}
           <div
@@ -77,7 +72,7 @@ export default function Contact() {
             </div>
 
             {/* Info */}
-            <div style={{ background: "var(--bg-warm)", padding: "2.5rem 3rem", display: "flex", flexDirection: "column", gap: "1.25rem", flex: 1 }}>
+            <div className="mobile-pad" style={{ background: "var(--bg-warm)", padding: "2.5rem 3rem", display: "flex", flexDirection: "column", gap: "1.25rem", flex: 1 }}>
               <h3
                 style={{
                   fontFamily: "var(--font-display), serif",
@@ -146,7 +141,7 @@ export default function Contact() {
           </div>
 
           {/* Form side */}
-          <div style={{ background: "#ffffff", padding: "3rem" }}>
+          <div className="mobile-pad" style={{ background: "#ffffff", padding: "3rem" }}>
             {submitted ? (
               <div style={{ height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem", textAlign: "center" }}>
                 <div style={{ width: "10px", height: "10px", background: "var(--gold)", transform: "rotate(45deg)" }} />
@@ -169,7 +164,7 @@ export default function Contact() {
                   onFocus={(e) => ((e.currentTarget as HTMLInputElement).style.borderColor = "var(--gold)")}
                   onBlur={(e) => ((e.currentTarget as HTMLInputElement).style.borderColor = "var(--border)")}
                 />
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
                     name="email" type="email" required placeholder="Email Address"
                     value={form.email} onChange={handleChange} style={inputStyle}

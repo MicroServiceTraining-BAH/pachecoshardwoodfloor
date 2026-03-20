@@ -99,7 +99,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex" style={{ display: "flex", alignItems: "center", gap: "0.125rem" }}>
+        <nav className="hidden md:flex" style={{ alignItems: "center", gap: "0.125rem" }}>
           {navLinks.map((link) => {
             const isActive = active === link.label;
             return (

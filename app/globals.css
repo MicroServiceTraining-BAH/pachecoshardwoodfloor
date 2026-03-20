@@ -68,6 +68,28 @@ body {
     );
 }
 
+/* ── Mobile overrides ── */
+
+@media (max-width: 768px) {
+  /* Tighten section padding on mobile */
+  section {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  /* Tighten inner panels */
+  .mobile-pad {
+    padding: 2rem 1.5rem !important;
+  }
+  /* Full width hero text on mobile */
+  .hero-text-col {
+    padding: 2.5rem 1.5rem !important;
+  }
+  /* Service panels: ensure min height on mobile */
+  .hero-panels-item {
+    min-height: 180px;
+  }
+}
+
 /* Section eyebrow label */
 .section-eyebrow {
   display: block;

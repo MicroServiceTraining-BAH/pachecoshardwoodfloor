@@ -3,10 +3,10 @@
 import Image from "next/image";
 
 const services = [
-  { label: "Hardwood\nInstall",   sub: "Full installation & layout",  photo: "/floor-oak.jpg" },
-  { label: "Intricate\nDesigns",  sub: "Custom patterns & inlays",    photo: "/floor-herringbone.jpg" },
-  { label: "Sand &\nRefinish",    sub: "Restore original beauty",     photo: "/floor-charcoal.jpg" },
-  { label: "Stair Rails\n& Repair", sub: "Crafted for every detail",  photo: "/floor-walnut-stairs.jpg" },
+  { label: "Hardwood\nInstall",     sub: "Full installation & layout",  photo: "/floor-oak.jpg" },
+  { label: "Intricate\nDesigns",    sub: "Custom patterns & inlays",    photo: "/floor-herringbone.jpg" },
+  { label: "Sand &\nRefinish",      sub: "Restore original beauty",     photo: "/floor-charcoal.jpg" },
+  { label: "Stair Rails\n& Repair", sub: "Crafted for every detail",    photo: "/floor-walnut-stairs.jpg" },
 ];
 
 export default function Hero() {
@@ -14,16 +14,12 @@ export default function Hero() {
     <section id="home">
       {/* Hero intro — two columns: text left, photo right */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          minHeight: "480px",
-          borderBottom: "1px solid var(--border)",
-        }}
-        className="grid-cols-1 md:grid-cols-2"
+        className="grid md:grid-cols-2"
+        style={{ minHeight: "480px", borderBottom: "1px solid var(--border)" }}
       >
         {/* Left: text */}
         <div
+          className="hero-text-col"
           style={{
             background: "var(--bg-page)",
             padding: "4.5rem 3rem 4rem",
@@ -116,7 +112,7 @@ export default function Hero() {
         </div>
 
         {/* Right: featured photo */}
-        <div style={{ position: "relative", overflow: "hidden", minHeight: "380px" }}>
+        <div className="hidden md:block" style={{ position: "relative", overflow: "hidden", minHeight: "380px" }}>
           <Image
             src="/floor-charcoal.jpg"
             alt="Beautifully refinished charcoal hardwood floor"
@@ -125,7 +121,6 @@ export default function Hero() {
             sizes="50vw"
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
-          {/* Subtle left fade to blend with text panel */}
           <div
             style={{
               position: "absolute",
@@ -138,14 +133,11 @@ export default function Hero() {
       </div>
 
       {/* Service panels */}
-      <div
-        style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", height: "300px" }}
-        className="grid-cols-2 md:grid-cols-4"
-      >
+      <div className="grid grid-cols-2 md:grid-cols-4 md:h-[300px]">
         {services.map((svc) => (
           <div
             key={svc.label}
-            className="group"
+            className="group hero-panels-item"
             style={{ position: "relative", overflow: "hidden", cursor: "pointer", background: "#1a1008" }}
           >
             <Image
@@ -156,7 +148,6 @@ export default function Hero() {
               style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
               className="group-hover:scale-105"
             />
-            {/* Bottom scrim */}
             <div
               style={{
                 position: "absolute", bottom: 0, left: 0, right: 0, height: "70%",
@@ -164,7 +155,6 @@ export default function Hero() {
                 pointerEvents: "none",
               }}
             />
-            {/* Gold hover top rule */}
             <div
               style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "3px",
@@ -172,7 +162,6 @@ export default function Hero() {
               }}
               className="group-hover:opacity-100"
             />
-            {/* Text */}
             <div
               style={{
                 position: "absolute", inset: 0, display: "flex",

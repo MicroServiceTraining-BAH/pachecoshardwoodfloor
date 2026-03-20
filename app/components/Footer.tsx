@@ -5,16 +5,12 @@ export default function Footer() {
     <footer style={{ background: "var(--bg-warm)", borderTop: "1px solid var(--border)" }}>
       {/* Main content */}
       <div
+        className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-10"
         style={{
           maxWidth: "1120px",
           margin: "0 auto",
           padding: "3rem 2rem 2.5rem",
-          display: "grid",
-          gridTemplateColumns: "2fr 1fr 1fr 1fr",
-          gap: "2.5rem",
-          flexWrap: "wrap",
         }}
-        className="grid-cols-1 md:grid-cols-4"
       >
         {/* Brand */}
         <div>

@@ -12,13 +12,8 @@ export default function About() {
     >
       <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "0",
-            border: "1px solid var(--border)",
-          }}
-          className="grid-cols-1 md:grid-cols-2"
+          className="grid md:grid-cols-2"
+          style={{ border: "1px solid var(--border)" }}
         >
           {/* Owners photo */}
           <div
@@ -56,7 +51,8 @@ export default function About() {
 
           {/* Text panel */}
           <div
-            style={{
+            className="mobile-pad"
+          style={{
               background: "#ffffff",
               padding: "3.5rem",
               borderLeft: "1px solid var(--border)",
