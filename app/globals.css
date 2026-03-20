@@ -2,27 +2,27 @@
 
 :root {
   /* Backgrounds */
-  --bg-page:    #faf6f1;
-  --bg-warm:    #f3ebe0;
-  --bg-mid:     #ece0cc;
-  --bg-panel:   #e4d4bc;
-  --bg-dark:    #1e1208;
+  --bg-page:    #F6F4EF;
+  --bg-warm:    #EDE8DC;
+  --bg-section: #E0D9C8;
+  --bg-panel:   #D4CAB4;
+  --bg-dark:    #0B1F10;   /* deep rich forest green */
 
-  /* Brand gold */
-  --gold:       #9a6e28;
-  --gold-light: #c8952a;
-  --gold-muted: rgba(154, 110, 40, 0.15);
-  --gold-border: rgba(154, 110, 40, 0.25);
+  /* Brand — vivid warm amber-gold */
+  --gold:        #C4781A;
+  --gold-light:  #E8981E;
+  --gold-muted:  rgba(196, 120, 26, 0.14);
+  --gold-border: rgba(196, 120, 26, 0.28);
 
   /* Text */
-  --text-dark:   #1a1008;
-  --text-body:   #3d2a14;
-  --text-muted:  #7a6040;
-  --text-light:  #f5ede0;
+  --text-dark:   #0A1A08;
+  --text-body:   #252C1E;
+  --text-muted:  #5A6450;
+  --text-light:  #F2EEE4;
 
   /* Borders */
-  --border:      rgba(154, 110, 40, 0.2);
-  --border-warm: rgba(154, 110, 40, 0.12);
+  --border:      rgba(160, 100, 20, 0.2);
+  --border-warm: rgba(160, 100, 20, 0.11);
 }
 
 @theme inline {
@@ -42,49 +42,25 @@ html {
 body {
   background: var(--bg-page);
   color: var(--text-dark);
-  font-family: var(--font-body), "DM Sans", sans-serif;
+  font-family: var(--font-body), "Outfit", sans-serif;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle wood stripe texture */
-.wood-stripe {
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 22px,
-      rgba(0,0,0,0.018) 22px,
-      rgba(0,0,0,0.018) 23px
-    ),
-    repeating-linear-gradient(
-      180deg,
-      transparent,
-      transparent 8px,
-      rgba(0,0,0,0.012) 8px,
-      rgba(0,0,0,0.012) 9px
-    );
-}
-
 /* ── Mobile overrides ── */
-
 @media (max-width: 768px) {
-  /* Tighten section padding on mobile */
   section {
     padding-left: 1.25rem !important;
     padding-right: 1.25rem !important;
   }
-  /* Tighten inner panels */
   .mobile-pad {
     padding: 2rem 1.5rem !important;
   }
-  /* Full width hero text on mobile */
   .hero-text-col {
     padding: 2.5rem 1.5rem !important;
   }
-  /* Service panels: ensure min height on mobile */
   .hero-panels-item {
     min-height: 180px;
   }
@@ -95,7 +71,7 @@ body {
   display: block;
   font-family: var(--font-body), sans-serif;
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold);
@@ -108,4 +84,9 @@ body {
   font-weight: 400;
   line-height: 1.1;
   color: var(--text-dark);
+}
+
+/* Hide scrollbar for testimonials carousel */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
