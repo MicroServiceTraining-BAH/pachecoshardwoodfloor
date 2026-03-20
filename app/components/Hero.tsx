@@ -2,194 +2,226 @@
 
 import Image from "next/image";
 
-const services = [
-  { label: "Hardwood\nInstall",     sub: "Full installation & layout",  photo: "/floor-oak.jpg" },
-  { label: "Intricate\nDesigns",    sub: "Custom patterns & inlays",    photo: "/floor-herringbone.jpg" },
-  { label: "Sand &\nRefinish",      sub: "Restore original beauty",     photo: "/floor-charcoal.jpg" },
-  { label: "Stair Rails\n& Repair", sub: "Crafted for every detail",    photo: "/floor-walnut-stairs.jpg" },
-];
-
 export default function Hero() {
   return (
     <section id="home">
-      {/* Hero intro — two columns: text left, photo right */}
-      <div
-        className="grid md:grid-cols-2"
-        style={{ minHeight: "480px", borderBottom: "1px solid var(--border)" }}
-      >
-        {/* Left: text */}
+      {/* Full-width hero with dark overlay */}
+      <div style={{ position: "relative", minHeight: "600px", display: "flex", alignItems: "center" }}>
+        <Image
+          src="/floor-charcoal.jpg"
+          alt="Beautifully refinished hardwood floor"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+        {/* Dark overlay */}
         <div
-          className="hero-text-col"
           style={{
-            background: "var(--bg-page)",
-            padding: "4.5rem 3rem 4rem",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(135deg, rgba(14,26,11,0.82) 0%, rgba(14,26,11,0.55) 60%, rgba(14,26,11,0.35) 100%)",
+          }}
+        />
+
+        {/* Content */}
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "5rem 2rem",
+            width: "100%",
           }}
         >
-          <span className="section-eyebrow" style={{ marginBottom: "1.25rem" }}>
-            Stafford, VA · Serving Northern Virginia since 2021
+          <span
+            style={{
+              display: "inline-block",
+              fontFamily: "var(--font-body), sans-serif",
+              fontSize: "0.65rem",
+              fontWeight: 600,
+              letterSpacing: "0.3em",
+              textTransform: "uppercase",
+              color: "var(--gold-light)",
+              marginBottom: "1.25rem",
+              borderLeft: "3px solid var(--gold-light)",
+              paddingLeft: "0.75rem",
+            }}
+          >
+            Stafford, VA · Serving Northern Virginia
           </span>
+
           <h1
             style={{
               fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
-              fontSize: "clamp(2.8rem, 5vw, 5rem)",
+              fontSize: "clamp(3rem, 7vw, 6rem)",
               fontWeight: 400,
               lineHeight: 1.0,
-              color: "var(--text-dark)",
+              color: "#ffffff",
               letterSpacing: "-0.01em",
+              maxWidth: "700px",
+              marginBottom: "1.5rem",
             }}
           >
-            The Art of
+            Premium Hardwood
             <br />
-            <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Hardwood.</em>
+            <em style={{ fontStyle: "italic", color: "var(--gold-light)" }}>Floors & Refinishing</em>
           </h1>
+
           <p
             style={{
               fontFamily: "var(--font-body), sans-serif",
-              fontSize: "1rem",
+              fontSize: "1.05rem",
               fontWeight: 300,
-              color: "var(--text-muted)",
-              marginTop: "1.5rem",
-              maxWidth: "400px",
-              lineHeight: 1.85,
+              color: "rgba(240,237,228,0.8)",
+              maxWidth: "480px",
+              lineHeight: 1.8,
+              marginBottom: "2.5rem",
             }}
           >
-            Family-owned and serving Northern Virginia since 2021 —
-            installations, refinishing, and custom designs done right,
-            every time.
+            Family-owned, serving Northern Virginia since 2021.
+            Installations, refinishing, and custom designs — done right, every time.
           </p>
-          <div style={{ display: "flex", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
+
+          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <a
               href="#contact"
               style={{
                 display: "inline-block",
-                padding: "0.8rem 2.25rem",
+                padding: "0.9rem 2.5rem",
                 background: "var(--gold)",
                 color: "#ffffff",
                 fontFamily: "var(--font-body), sans-serif",
                 fontSize: "0.75rem",
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 textDecoration: "none",
                 transition: "background 0.2s ease",
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = "#b8820a")}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--gold-light)")}
               onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--gold)")}
             >
               Get a Free Quote
             </a>
             <a
-              href="#gallery"
+              href="#services"
               style={{
                 display: "inline-block",
-                padding: "0.8rem 2.25rem",
+                padding: "0.9rem 2.5rem",
                 background: "transparent",
-                color: "var(--text-dark)",
-                border: "1px solid var(--border)",
+                color: "#ffffff",
+                border: "1px solid rgba(255,255,255,0.45)",
                 fontFamily: "var(--font-body), sans-serif",
                 fontSize: "0.75rem",
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 textDecoration: "none",
-                transition: "border-color 0.2s ease, color 0.2s ease",
+                transition: "border-color 0.2s ease, background 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--gold)";
-                (e.currentTarget as HTMLAnchorElement).style.color = "var(--gold)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--gold-light)";
+                (e.currentTarget as HTMLAnchorElement).style.background = "rgba(164,128,48,0.15)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
-                (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-dark)";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.45)";
+                (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
               }}
             >
-              View Our Work
+              Our Services
             </a>
           </div>
         </div>
 
-        {/* Right: featured photo */}
-        <div className="hidden md:block" style={{ position: "relative", overflow: "hidden", minHeight: "380px" }}>
-          <Image
-            src="/floor-charcoal.jpg"
-            alt="Beautifully refinished charcoal hardwood floor"
-            fill
-            priority
-            sizes="50vw"
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "linear-gradient(to right, var(--bg-page) 0%, transparent 18%)",
-              pointerEvents: "none",
-            }}
-          />
+        {/* Bottom rating badge */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "2rem",
+            right: "2rem",
+            zIndex: 2,
+            background: "rgba(14,26,11,0.7)",
+            backdropFilter: "blur(8px)",
+            border: "1px solid rgba(164,128,48,0.4)",
+            padding: "0.75rem 1.25rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+          }}
+        >
+          <div>
+            <div style={{ display: "flex", gap: "2px", marginBottom: "2px" }}>
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} width="12" height="12" viewBox="0 0 24 24" fill="var(--gold-light)">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              ))}
+            </div>
+            <p style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.65rem", fontWeight: 400, color: "rgba(240,237,228,0.7)", letterSpacing: "0.05em" }}>
+              4.8 · 34 Google Reviews
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Service panels */}
-      <div className="grid grid-cols-2 md:grid-cols-4 md:h-[300px]">
-        {services.map((svc) => (
-          <div
-            key={svc.label}
-            className="group hero-panels-item"
-            style={{ position: "relative", overflow: "hidden", cursor: "pointer", background: "#1a1008" }}
-          >
-            <Image
-              src={svc.photo}
-              alt={svc.label.replace("\n", " ")}
-              fill
-              sizes="25vw"
-              style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
-              className="group-hover:scale-105"
-            />
+      {/* Stats bar */}
+      <div
+        style={{
+          background: "var(--bg-dark)",
+          borderBottom: "1px solid rgba(164,128,48,0.2)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "0 2rem",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+          }}
+        >
+          {[
+            { n: "25+", label: "Years of Experience" },
+            { n: "40+", label: "Combined Business Yrs" },
+            { n: "N. VA", label: "Service Area" },
+          ].map((s, i) => (
             <div
+              key={s.label}
               style={{
-                position: "absolute", bottom: 0, left: 0, right: 0, height: "70%",
-                background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 100%)",
-                pointerEvents: "none",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute", top: 0, left: 0, right: 0, height: "3px",
-                background: "var(--gold-light)", opacity: 0, transition: "opacity 0.3s ease",
-              }}
-              className="group-hover:opacity-100"
-            />
-            <div
-              style={{
-                position: "absolute", inset: 0, display: "flex",
-                flexDirection: "column", justifyContent: "flex-end", padding: "1.5rem",
+                padding: "1.5rem 2rem",
+                borderRight: i < 2 ? "1px solid rgba(164,128,48,0.15)" : "none",
+                textAlign: "center",
               }}
             >
-              <div style={{ width: "7px", height: "7px", background: "var(--gold-light)", transform: "rotate(45deg)", marginBottom: "0.65rem" }} />
               <p
                 style={{
-                  fontFamily: "var(--font-display), serif", fontSize: "1.6rem", fontWeight: 500,
-                  color: "#ffffff", lineHeight: 1.15, whiteSpace: "pre-line",
-                  textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+                  fontFamily: "var(--font-display), serif",
+                  fontSize: "2rem",
+                  fontWeight: 400,
+                  color: "var(--gold-light)",
+                  lineHeight: 1,
                 }}
               >
-                {svc.label}
+                {s.n}
               </p>
               <p
                 style={{
-                  fontFamily: "var(--font-body), sans-serif", fontSize: "0.8rem", fontWeight: 400,
-                  color: "rgba(255,255,255,0.8)", marginTop: "0.35rem",
-                  textShadow: "0 1px 6px rgba(0,0,0,0.5)",
+                  fontFamily: "var(--font-body), sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 500,
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  color: "rgba(240,237,228,0.55)",
+                  marginTop: "0.35rem",
                 }}
               >
-                {svc.sub}
+                {s.label}
               </p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
