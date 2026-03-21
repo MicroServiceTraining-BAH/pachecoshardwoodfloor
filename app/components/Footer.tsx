@@ -109,11 +109,27 @@ export default function Footer() {
             Contact
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-            {["309 Kingsland Dr\nStafford, VA 22556","571-575-1570","pachecoshardwoodfloor\n@gmail.com"].map((line) => (
-              <p key={line} style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", whiteSpace: "pre-line" }}>
-                {line}
-              </p>
-            ))}
+            {[
+              { text: "309 Kingsland Dr\nStafford, VA 22556" },
+              { text: "571-575-1570", href: "tel:5715751570" },
+              { text: "pachecoshardwoodfloor@gmail.com", href: "mailto:pachecoshardwoodfloor@gmail.com" },
+            ].map((item) =>
+              item.href ? (
+                <a
+                  key={item.text}
+                  href={item.href}
+                  style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", textDecoration: "none", whiteSpace: "pre-line", transition: "color 0.2s ease" }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--gold-light)")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-muted)")}
+                >
+                  {item.text}
+                </a>
+              ) : (
+                <p key={item.text} style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", whiteSpace: "pre-line" }}>
+                  {item.text}
+                </p>
+              )
+            )}
           </div>
         </div>
       </div>

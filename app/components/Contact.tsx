@@ -101,6 +101,7 @@ export default function Contact() {
                     </svg>
                   ),
                   text: "571-575-1570  ·  571-383-5946",
+                  href: "tel:5715751570",
                 },
                 {
                   icon: (
