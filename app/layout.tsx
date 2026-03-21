@@ -18,9 +18,36 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Pacheco's Hardwood Floors | The Art of Hardwood",
+  title: "Pacheco's Hardwood Floors | Stafford, VA",
   description:
-    "Pacheco's Hardwood Floors — professional hardwood floor installation, sand & refinish, intricate designs, and stair rail repair. Serving Stafford, VA and the Northern Virginia area since 2021.",
+    "Family-owned hardwood floor installation, refinishing & custom designs serving Stafford, VA and Northern Virginia since 2021. Call for a free quote: 571-575-1570.",
+  keywords: [
+    "hardwood floors Stafford VA",
+    "hardwood floor installation Northern Virginia",
+    "floor refinishing Stafford",
+    "sand and refinish hardwood",
+    "custom hardwood designs",
+    "stair rail repair Virginia",
+    "hardwood flooring contractor",
+  ],
+  authors: [{ name: "Pacheco's Hardwood Floors" }],
+  metadataBase: new URL("https://pachecoshardwoodfloor.vercel.app"),
+  openGraph: {
+    title: "Pacheco's Hardwood Floors | Stafford, VA",
+    description:
+      "Family-owned hardwood floor installation, refinishing & custom designs serving Northern Virginia since 2021. Free quotes available.",
+    url: "https://pachecoshardwoodfloor.vercel.app",
+    siteName: "Pacheco's Hardwood Floors",
+    images: [{ url: "/floor-charcoal.jpg", width: 1200, height: 630, alt: "Beautifully refinished hardwood floor by Pacheco's" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pacheco's Hardwood Floors | Stafford, VA",
+    description: "Professional hardwood flooring in Northern Virginia since 2021.",
+    images: ["/floor-charcoal.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +55,52 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Pacheco's Hardwood Floors",
+    "image": "https://pachecoshardwoodfloor.vercel.app/floor-charcoal.jpg",
+    "description": "Family-owned hardwood floor installation, refinishing, and custom designs serving Stafford, VA and Northern Virginia since 2021.",
+    "url": "https://pachecoshardwoodfloor.vercel.app",
+    "telephone": "571-575-1570",
+    "email": "pachecoshardwoodfloor@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "309 Kingsland Dr",
+      "addressLocality": "Stafford",
+      "addressRegion": "VA",
+      "postalCode": "22556",
+      "addressCountry": "US",
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.4721,
+      "longitude": -77.4605,
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Northern Virginia",
+    },
+    "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "34",
+    },
+    "sameAs": [
+      "https://www.facebook.com",
+    ],
+  };
+
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
