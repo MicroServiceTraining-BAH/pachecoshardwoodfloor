@@ -66,28 +66,17 @@ export default function Hero() {
             style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: "0.75rem",
+              gap: "0.6rem",
               marginTop: "2rem",
-              padding: "0.65rem 1.25rem",
-              background: "var(--bg-dark)",
-              border: "1px solid rgba(154,110,40,0.45)",
               textDecoration: "none",
-              transition: "border-color 0.2s ease, background 0.2s ease",
+              transition: "opacity 0.2s ease",
             }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = "var(--gold)";
-              el.style.background = "#2a1a0a";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = "rgba(154,110,40,0.45)";
-              el.style.background = "var(--bg-dark)";
-            }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.75")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
           >
-            <div style={{ display: "flex", gap: "3px" }}>
+            <div style={{ display: "flex", gap: "2px" }}>
               {[0,1,2,3,4].map((i) => (
-                <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#f4b400">
+                <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="#c8952a">
                   <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                 </svg>
               ))}
@@ -96,8 +85,8 @@ export default function Hero() {
               fontFamily: "var(--font-body), sans-serif",
               fontSize: "0.78rem",
               fontWeight: 400,
-              color: "var(--text-light)",
-              letterSpacing: "0.03em",
+              color: "var(--text-muted)",
+              letterSpacing: "0.04em",
               whiteSpace: "nowrap",
             }}>
               4.8 · 34 Google Reviews
