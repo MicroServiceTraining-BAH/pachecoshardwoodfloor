@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 
 const navLinks = [
-  { label: "Home",     href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Products", href: "#products" },
-  { label: "Gallery",  href: "#gallery" },
-  { label: "About",    href: "#about" },
-  { label: "Contact",  href: "#contact" },
+  { label: "Home",      href: "#home" },
+  { label: "Services",  href: "#services" },
+  { label: "Products",  href: "#products" },
+  { label: "Gallery",   href: "#gallery" },
+  { label: "About",     href: "#about" },
+  { label: "Reviews",   href: "#reviews" },
+  { label: "Contact",   href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -52,7 +53,6 @@ export default function Navbar() {
           onClick={() => setActive("Home")}
           style={{ display: "flex", alignItems: "center", gap: "0.875rem", textDecoration: "none" }}
         >
-          {/* Logo placeholder */}
           <div
             style={{
               width: "56px",
@@ -99,37 +99,26 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex" style={{ alignItems: "center", gap: "0.125rem" }}>
-          {navLinks.map((link) => {
-            const isActive = active === link.label;
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setActive(link.label)}
-                style={{
-                  padding: "0.45rem 1rem",
-                  fontSize: "0.78rem",
-                  fontWeight: 500,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: isActive ? "#ffffff" : "var(--text-body)",
-                  background: isActive ? "var(--gold)" : "transparent",
-                  textDecoration: "none",
-                  transition: "color 0.2s ease, background 0.2s ease",
-                  borderRadius: "2px",
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "var(--gold)";
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-body)";
-                }}
-              >
-                {link.label}
-              </a>
-            );
-          })}
+        <nav className="hidden md:flex" style={{ alignItems: "center" }}>
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setActive(link.label)}
+              className={`nav-link${active === link.label ? " nav-active" : ""}`}
+            >
+              {link.label}
+            </a>
+          ))}
+
+          {/* FREE QUOTE button */}
+          <a
+            href="#contact"
+            onClick={() => setActive("Contact")}
+            className="nav-cta"
+          >
+            Free Quote
+          </a>
         </nav>
 
         {/* Mobile toggle */}
@@ -166,11 +155,20 @@ export default function Navbar() {
                 color: active === link.label ? "var(--gold)" : "var(--text-body)",
                 textDecoration: "none",
                 borderBottom: "1px solid var(--border-warm)",
+                transition: "color 0.15s ease",
               }}
             >
               {link.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => { setActive("Contact"); setOpen(false); }}
+            className="nav-cta"
+            style={{ display: "block", marginTop: "1.25rem", textAlign: "center" }}
+          >
+            Free Quote
+          </a>
         </div>
       )}
     </header>

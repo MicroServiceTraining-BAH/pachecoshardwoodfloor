@@ -50,12 +50,16 @@ export default function Products() {
                 transition: "box-shadow 0.2s ease, transform 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.1)";
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)";
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.boxShadow = "0 12px 40px rgba(154,110,40,0.18), 0 4px 12px rgba(0,0,0,0.1)";
+                el.style.transform = "translateY(-5px)";
+                el.style.borderColor = "var(--gold-light)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+                const el = e.currentTarget as HTMLDivElement;
+                el.style.boxShadow = "none";
+                el.style.transform = "translateY(0)";
+                el.style.borderColor = "var(--border)";
               }}
             >
               {/* Swatch */}

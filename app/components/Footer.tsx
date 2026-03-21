@@ -36,7 +36,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label={s.label}
                 style={{ color: "var(--text-muted)", transition: "color 0.2s ease" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--gold)")}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--gold-light)")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-muted)")}
               >
                 <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">{s.icon}</svg>
@@ -55,9 +55,18 @@ export default function Footer() {
               <a
                 key={href}
                 href={href}
-                style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", textDecoration: "none", transition: "color 0.2s ease" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--gold)")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--text-muted)")}
+                style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", textDecoration: "none", transition: "color 0.2s ease, text-decoration-color 0.2s ease" }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = "var(--gold-light)";
+                  el.style.textDecoration = "underline";
+                  el.style.textUnderlineOffset = "3px";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = "var(--text-muted)";
+                  el.style.textDecoration = "none";
+                }}
               >
                 {label}
               </a>
@@ -72,9 +81,24 @@ export default function Footer() {
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
             {["Hardwood Install","Intricate Designs","Sand & Refinish","Stair Rail Repair"].map((s) => (
-              <span key={s} style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)" }}>
+              <a
+                key={s}
+                href="#services"
+                style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", textDecoration: "none", transition: "color 0.2s ease" }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = "var(--gold-light)";
+                  el.style.textDecoration = "underline";
+                  el.style.textUnderlineOffset = "3px";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = "var(--text-muted)";
+                  el.style.textDecoration = "none";
+                }}
+              >
                 {s}
-              </span>
+              </a>
             ))}
           </div>
         </div>

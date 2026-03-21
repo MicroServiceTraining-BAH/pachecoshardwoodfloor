@@ -60,7 +60,51 @@ export default function Hero() {
             installations, refinishing, and custom designs done right,
             every time.
           </p>
-          <div style={{ display: "flex", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
+          {/* Google Reviews badge */}
+          <a
+            href="#reviews"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginTop: "2rem",
+              padding: "0.65rem 1.25rem",
+              background: "var(--bg-dark)",
+              border: "1px solid rgba(154,110,40,0.45)",
+              textDecoration: "none",
+              transition: "border-color 0.2s ease, background 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.borderColor = "var(--gold)";
+              el.style.background = "#2a1a0a";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.borderColor = "rgba(154,110,40,0.45)";
+              el.style.background = "var(--bg-dark)";
+            }}
+          >
+            <div style={{ display: "flex", gap: "3px" }}>
+              {[0,1,2,3,4].map((i) => (
+                <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#f4b400">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+              ))}
+            </div>
+            <span style={{
+              fontFamily: "var(--font-body), sans-serif",
+              fontSize: "0.78rem",
+              fontWeight: 400,
+              color: "var(--text-light)",
+              letterSpacing: "0.03em",
+              whiteSpace: "nowrap",
+            }}>
+              4.8 · 34 Google Reviews
+            </span>
+          </a>
+
+          <div style={{ display: "flex", gap: "1rem", marginTop: "1.25rem", flexWrap: "wrap" }}>
             <a
               href="#contact"
               style={{
@@ -74,10 +118,20 @@ export default function Hero() {
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 textDecoration: "none",
-                transition: "background 0.2s ease",
+                transition: "background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = "#b8820a")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--gold)")}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.background = "var(--text-dark)";
+                el.style.transform = "translateY(-2px)";
+                el.style.boxShadow = "0 6px 20px rgba(0,0,0,0.2)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.background = "var(--gold)";
+                el.style.transform = "translateY(0)";
+                el.style.boxShadow = "none";
+              }}
             >
               Get a Free Quote
             </a>
@@ -95,15 +149,21 @@ export default function Hero() {
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 textDecoration: "none",
-                transition: "border-color 0.2s ease, color 0.2s ease",
+                transition: "border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--gold)";
-                (e.currentTarget as HTMLAnchorElement).style.color = "var(--gold)";
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.borderColor = "var(--gold-light)";
+                el.style.color = "var(--gold-light)";
+                el.style.transform = "translateY(-2px)";
+                el.style.boxShadow = "0 4px 16px rgba(0,0,0,0.1)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
-                (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-dark)";
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.borderColor = "var(--border)";
+                el.style.color = "var(--text-dark)";
+                el.style.transform = "translateY(0)";
+                el.style.boxShadow = "none";
               }}
             >
               View Our Work
@@ -133,12 +193,13 @@ export default function Hero() {
       </div>
 
       {/* Service panels */}
-      <div className="grid grid-cols-2 md:grid-cols-4 md:h-[300px]">
+      <div id="services" className="grid grid-cols-2 md:grid-cols-4 md:h-[300px]">
         {services.map((svc) => (
-          <div
+          <a
             key={svc.label}
+            href="#contact"
             className="group hero-panels-item"
-            style={{ position: "relative", overflow: "hidden", cursor: "pointer", background: "#1a1008" }}
+            style={{ position: "relative", overflow: "hidden", cursor: "pointer", background: "#1a1008", display: "block", textDecoration: "none" }}
           >
             <Image
               src={svc.photo}
@@ -148,13 +209,15 @@ export default function Hero() {
               style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
               className="group-hover:scale-105"
             />
+            {/* Dark gradient */}
             <div
               style={{
                 position: "absolute", bottom: 0, left: 0, right: 0, height: "70%",
-                background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 100%)",
+                background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%)",
                 pointerEvents: "none",
               }}
             />
+            {/* Gold top accent line on hover */}
             <div
               style={{
                 position: "absolute", top: 0, left: 0, right: 0, height: "3px",
@@ -162,6 +225,7 @@ export default function Hero() {
               }}
               className="group-hover:opacity-100"
             />
+            {/* Content */}
             <div
               style={{
                 position: "absolute", inset: 0, display: "flex",
@@ -187,8 +251,23 @@ export default function Hero() {
               >
                 {svc.sub}
               </p>
+              {/* "Get a Quote →" slides up on hover */}
+              <p
+                className="service-panel-cta"
+                style={{
+                  fontFamily: "var(--font-body), sans-serif",
+                  fontSize: "0.65rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "var(--gold-light)",
+                  marginTop: "0.75rem",
+                }}
+              >
+                Get a Quote →
+              </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

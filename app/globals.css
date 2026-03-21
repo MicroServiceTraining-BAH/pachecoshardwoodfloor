@@ -90,6 +90,98 @@ body {
   }
 }
 
+/* ── Navbar ── */
+
+.nav-link {
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-body);
+  border-radius: 2px;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+.nav-link:hover {
+  color: var(--gold-light);
+  background: var(--gold-muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.nav-link.nav-active {
+  color: #ffffff;
+  background: var(--gold);
+}
+.nav-link.nav-active:hover {
+  color: #ffffff;
+  background: var(--gold-light);
+}
+.nav-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Free Quote CTA button in nav */
+.nav-cta {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  margin-left: 0.875rem;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: var(--font-body), "DM Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-cta:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.nav-cta:active {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  transform: translateY(1px);
+}
+.nav-cta:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ── Global interactive states ── */
+
+/* Focus-visible ring for all anchors and buttons */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Active press feedback on links that look like buttons */
+a[href]:active {
+  opacity: 0.85;
+  transform: translateY(1px);
+}
+
+/* Service panel link — smooth "Get a Quote" slide up */
+.service-panel-cta {
+  transform: translateY(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.group:hover .service-panel-cta,
+.group:focus-within .service-panel-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Section eyebrow label */
 .section-eyebrow {
   display: block;
