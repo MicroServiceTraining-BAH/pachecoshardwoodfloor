@@ -111,7 +111,7 @@ export default function Footer() {
           <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
             {[
               { text: "309 Kingsland Dr\nStafford, VA 22556" },
-              { text: "571-575-1570", href: "tel:5715751570" },
+              { text: "571-383-5946", href: "tel:5713835946" },
               { text: "pachecoshardwoodfloor@gmail.com", href: "mailto:pachecoshardwoodfloor@gmail.com" },
             ].map((item) =>
               item.href ? (

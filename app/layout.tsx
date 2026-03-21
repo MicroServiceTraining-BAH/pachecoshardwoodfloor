@@ -62,7 +62,7 @@ export default function RootLayout({
     "image": "https://pachecoshardwoodfloor.vercel.app/floor-charcoal.jpg",
     "description": "Family-owned hardwood floor installation, refinishing, and custom designs serving Stafford, VA and Northern Virginia since 2021.",
     "url": "https://pachecoshardwoodfloor.vercel.app",
-    "telephone": "571-575-1570",
+    "telephone": "571-383-5946",
     "email": "pachecoshardwoodfloor@gmail.com",
     "address": {
       "@type": "PostalAddress",
