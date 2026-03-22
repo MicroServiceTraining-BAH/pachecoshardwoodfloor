@@ -244,12 +244,12 @@ export default function Gallery() {
                   />
                   {/* Hover overlay */}
                   <motion.div
-                    className="absolute inset-0 flex flex-col justify-end p-3"
+                    className="absolute inset-0 flex flex-col justify-center items-center text-center p-3"
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                    <div className="absolute inset-0 bg-black/60" />
                     <h3 className="relative text-white text-xs sm:text-sm font-semibold line-clamp-1 drop-shadow-md" style={{ fontFamily: "var(--font-display), serif" }}>
                       {item.title}
                     </h3>
