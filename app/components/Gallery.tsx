@@ -249,11 +249,11 @@ export default function Gallery() {
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    <h3 className="relative text-white text-xs sm:text-sm font-semibold line-clamp-1" style={{ fontFamily: "var(--font-display), serif" }}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                    <h3 className="relative text-white text-xs sm:text-sm font-semibold line-clamp-1 drop-shadow-md" style={{ fontFamily: "var(--font-display), serif" }}>
                       {item.title}
                     </h3>
-                    <p className="relative text-white/70 text-[10px] sm:text-xs mt-0.5 line-clamp-1" style={{ fontFamily: "var(--font-body), sans-serif" }}>
+                    <p className="relative text-white text-[10px] sm:text-xs mt-0.5 line-clamp-1 drop-shadow-md" style={{ fontFamily: "var(--font-body), sans-serif", opacity: 0.9 }}>
                       {item.desc}
                     </p>
                   </motion.div>
