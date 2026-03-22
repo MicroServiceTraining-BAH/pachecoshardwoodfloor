@@ -143,7 +143,7 @@ export default function Footer() {
             The Art of Hardwood
           </p>
           <p style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.75rem", fontWeight: 300, color: "var(--text-muted)" }}>
-            Website by Gabriel Cajigas
+            Website by <a href="https://lvluplocal.co/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--text-muted)", textDecoration: "underline" }}>LevelUp Local</a>
           </p>
         </div>
       </div>
