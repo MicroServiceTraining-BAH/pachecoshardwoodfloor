@@ -3,10 +3,10 @@
 import Image from "next/image";
 
 const services = [
-  { label: "Hardwood\nInstall",     sub: "Full installation & layout",  photo: "/floor-oak.jpg" },
-  { label: "Intricate\nDesigns",    sub: "Custom patterns & inlays",    photo: "/floor-herringbone.jpg" },
-  { label: "Sand &\nRefinish",      sub: "Restore original beauty",     photo: "/floor-charcoal.jpg" },
-  { label: "Stair Rails\n& Repair", sub: "Crafted for every detail",    photo: "/floor-walnut-stairs.jpg" },
+  { label: "Hardwood\nInstall",     sub: "Full installation & layout",  photo: "/hw-tigerwood-room.jpg" },
+  { label: "Intricate\nDesigns",    sub: "Custom patterns & inlays",    photo: "/design-herringbone.jpg" },
+  { label: "Sand &\nRefinish",      sub: "Restore original beauty",     photo: "/refinish-before-after-kitchen.jpg" },
+  { label: "Stair Rails\n& Repair", sub: "Crafted for every detail",    photo: "/stairs-install-action.jpg" },
 ];
 
 export default function Hero() {
@@ -163,8 +163,8 @@ export default function Hero() {
         {/* Right: featured photo */}
         <div className="hidden md:block" style={{ position: "relative", overflow: "hidden", minHeight: "380px" }}>
           <Image
-            src="/floor-charcoal.jpg"
-            alt="Beautifully refinished charcoal hardwood floor"
+            src="/hw-cherry-foyer.jpg"
+            alt="Brazilian cherry hardwood floor with custom staircase"
             fill
             priority
             sizes="50vw"

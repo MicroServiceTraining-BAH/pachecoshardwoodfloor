@@ -38,7 +38,7 @@ export const metadata: Metadata = {
       "Family-owned hardwood floor installation, refinishing & custom designs serving Northern Virginia since 2021. Free quotes available.",
     url: "https://pachecoshardwoodfloor.vercel.app",
     siteName: "Pacheco's Hardwood Floors",
-    images: [{ url: "/floor-charcoal.jpg", width: 1200, height: 630, alt: "Beautifully refinished hardwood floor by Pacheco's" }],
+    images: [{ url: "/hw-cherry-foyer.jpg", width: 1200, height: 630, alt: "Brazilian cherry hardwood floor by Pacheco's" }],
     locale: "en_US",
     type: "website",
   },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pacheco's Hardwood Floors | Stafford, VA",
     description: "Professional hardwood flooring in Northern Virginia since 2021.",
-    images: ["/floor-charcoal.jpg"],
+    images: ["/hw-cherry-foyer.jpg"],
   },
 };
 
@@ -59,7 +59,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Pacheco's Hardwood Floors",
-    "image": "https://pachecoshardwoodfloor.vercel.app/floor-charcoal.jpg",
+    "image": "https://pachecoshardwoodfloor.vercel.app/hw-cherry-foyer.jpg",
     "description": "Family-owned hardwood floor installation, refinishing, and custom designs serving Stafford, VA and Northern Virginia since 2021.",
     "url": "https://pachecoshardwoodfloor.vercel.app",
     "telephone": "571-383-5946",
