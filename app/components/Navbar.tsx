@@ -56,7 +56,7 @@ export default function Navbar() {
           <img
             src="/logo.png"
             alt="Pacheco's Hardwood Floors"
-            style={{ height: "90px", width: "auto", mixBlendMode: "multiply" }}
+            style={{ height: "90px", width: "auto" }}
           />
         </a>
 
