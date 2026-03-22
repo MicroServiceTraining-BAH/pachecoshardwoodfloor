@@ -51,51 +51,13 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={() => setActive("Home")}
-          style={{ display: "flex", alignItems: "center", gap: "0.875rem", textDecoration: "none" }}
+          style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
         >
-          <div
-            style={{
-              width: "56px",
-              height: "56px",
-              flexShrink: 0,
-              border: "1px dashed var(--border)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "var(--bg-warm)",
-            }}
-          >
-            <span style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.55rem", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)" }}>
-              Logo
-            </span>
-          </div>
-          <div>
-            <div
-              style={{
-                fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
-                fontSize: "1.25rem",
-                fontWeight: 500,
-                letterSpacing: "0.07em",
-                color: "var(--text-dark)",
-                lineHeight: 1,
-              }}
-            >
-              PACHECO&apos;S
-            </div>
-            <div
-              style={{
-                fontFamily: "var(--font-body), 'DM Sans', sans-serif",
-                fontSize: "0.6rem",
-                fontWeight: 500,
-                letterSpacing: "0.28em",
-                color: "var(--gold)",
-                textTransform: "uppercase",
-                marginTop: "3px",
-              }}
-            >
-              HARDWOOD FLOORS
-            </div>
-          </div>
+          <img
+            src="/logo.png"
+            alt="Pacheco's Hardwood Floors"
+            style={{ height: "60px", width: "auto" }}
+          />
         </a>
 
         {/* Desktop nav */}
