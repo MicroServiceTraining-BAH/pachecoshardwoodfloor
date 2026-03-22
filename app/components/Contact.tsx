@@ -63,7 +63,7 @@ export default function Contact() {
             {/* Project photo — fills top portion */}
             <div style={{ flex: "0 0 260px", position: "relative", overflow: "hidden" }}>
               <Image
-                src="/floor-walnut-stairs.jpg"
+                src="/stairs-rustic-walnut.jpg"
                 alt="Completed walnut hardwood floor with staircase"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

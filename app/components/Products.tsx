@@ -3,10 +3,10 @@
 import Image from "next/image";
 
 const products = [
-  { name: "Designs",      description: "Special order · 2-week lead time", note: "Custom",  photo: "/floor-herringbone.jpg" },
-  { name: "Prefinished",  description: "Select colors in-stock",           note: "Ready",   photo: "/floor-charcoal.jpg" },
-  { name: "Exotic",       description: "Special order",                    note: "Rare",    photo: "/floor-walnut-stairs.jpg" },
-  { name: "Standard Oak", description: "In-stock · stained to taste",      note: "Classic", photo: "/floor-oak.jpg" },
+  { name: "Designs",      description: "Special order · 2-week lead time", note: "Custom",  photo: "/design-herringbone.jpg" },
+  { name: "Prefinished",  description: "Select colors in-stock",           note: "Ready",   photo: "/hw-dark-open-plan.jpg" },
+  { name: "Exotic",       description: "Special order",                    note: "Rare",    photo: "/stairs-rustic-walnut.jpg" },
+  { name: "Standard Oak", description: "In-stock · stained to taste",      note: "Classic", photo: "/hw-oak-bedroom.jpg" },
 ];
 
 export default function Products() {
