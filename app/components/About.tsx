@@ -13,27 +13,26 @@ export default function About() {
           className="grid md:grid-cols-2"
           style={{ border: "1px solid var(--border)" }}
         >
-          {/* Owners photo placeholder */}
+          {/* Owners photo */}
           <div
             style={{
               minHeight: "460px",
               position: "relative",
               overflow: "hidden",
-              background: "var(--bg-panel)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.75rem",
             }}
           >
-            <svg width="48" height="48" fill="none" stroke="var(--border)" strokeWidth="1" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            <p style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--text-muted)" }}>
-              Photo Coming Soon
-            </p>
+            <img
+              src="/owners.jpg"
+              alt="Enos and Amy Pacheco, owners of Pacheco's Hardwood Floor"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center top",
+                position: "absolute",
+                inset: 0,
+              }}
+            />
           </div>
 
           {/* Text panel */}
