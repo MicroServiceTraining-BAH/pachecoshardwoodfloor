@@ -6,14 +6,29 @@ import Image from "next/image";
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    const data = await res.json();
+    setLoading(false);
+    if (data.error) {
+      setError(data.error);
+    } else {
+      setSubmitted(true);
+    }
   }
 
   const inputStyle: React.CSSProperties = {
@@ -187,12 +202,18 @@ export default function Contact() {
                   onBlur={(e) => ((e.currentTarget as HTMLTextAreaElement).style.borderColor = "var(--border)")}
                 />
 
+                {error && (
+                  <p style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.85rem", color: "#c0392b" }}>
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     alignSelf: "flex-start",
                     padding: "0.75rem 2.25rem",
-                    background: "var(--gold)",
+                    background: loading ? "var(--text-muted)" : "var(--gold)",
                     color: "#ffffff",
                     border: "none",
                     fontFamily: "var(--font-body), sans-serif",
@@ -200,13 +221,13 @@ export default function Contact() {
                     fontWeight: 500,
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
-                    cursor: "pointer",
+                    cursor: loading ? "not-allowed" : "pointer",
                     transition: "background 0.2s ease",
                   }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--gold-light)")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--gold)")}
+                  onMouseEnter={(e) => { if (!loading) (e.currentTarget as HTMLButtonElement).style.background = "var(--gold-light)"; }}
+                  onMouseLeave={(e) => { if (!loading) (e.currentTarget as HTMLButtonElement).style.background = "var(--gold)"; }}
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             )}

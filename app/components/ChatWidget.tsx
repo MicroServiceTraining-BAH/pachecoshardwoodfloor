@@ -6,10 +6,26 @@ export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [msg, setMsg]   = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSend(e: React.FormEvent) {
+  async function handleSend(e: React.FormEvent) {
     e.preventDefault();
-    if (msg.trim()) setSent(true);
+    if (!msg.trim()) return;
+    setLoading(true);
+    setError("");
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg }),
+    });
+    const data = await res.json();
+    setLoading(false);
+    if (data.error) {
+      setError(data.error);
+    } else {
+      setSent(true);
+    }
   }
 
   return (
@@ -91,11 +107,15 @@ export default function ChatWidget() {
                     onFocus={(e) => ((e.currentTarget as HTMLTextAreaElement).style.borderColor = "var(--gold)")}
                     onBlur={(e) => ((e.currentTarget as HTMLTextAreaElement).style.borderColor = "var(--border)")}
                   />
+                  {error && (
+                    <p style={{ fontFamily: "var(--font-body), sans-serif", fontSize: "0.75rem", color: "#c0392b" }}>{error}</p>
+                  )}
                   <button
                     type="submit"
+                    disabled={loading}
                     style={{
                       padding: "0.65rem",
-                      background: "var(--gold)",
+                      background: loading ? "var(--text-muted)" : "var(--gold)",
                       color: "#ffffff",
                       border: "none",
                       fontFamily: "var(--font-body), sans-serif",
@@ -103,13 +123,13 @@ export default function ChatWidget() {
                       fontWeight: 600,
                       letterSpacing: "0.15em",
                       textTransform: "uppercase",
-                      cursor: "pointer",
+                      cursor: loading ? "not-allowed" : "pointer",
                       transition: "background 0.2s ease",
                     }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "#b8820a")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--gold)")}
+                    onMouseEnter={(e) => { if (!loading) (e.currentTarget as HTMLButtonElement).style.background = "#b8820a"; }}
+                    onMouseLeave={(e) => { if (!loading) (e.currentTarget as HTMLButtonElement).style.background = "var(--gold)"; }}
                   >
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               </>
