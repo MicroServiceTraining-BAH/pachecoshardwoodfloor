@@ -88,7 +88,7 @@ export default function RootLayout({
       "reviewCount": "34",
     },
     "sameAs": [
-      "https://www.facebook.com",
+      "https://www.facebook.com/pachecoshardwoodfloor",
     ],
   };
 
