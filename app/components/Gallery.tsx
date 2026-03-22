@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
@@ -151,10 +152,12 @@ function GalleryModal({
               exit={{ y: 16, opacity: 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
             >
-              <img
+              <Image
                 src={selectedItem.url}
                 alt={selectedItem.title}
-                className="w-full h-full object-cover"
+                fill
+                sizes="90vw"
+                className="object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                 <h3 className="text-white font-semibold text-lg" style={{ fontFamily: "var(--font-display), serif" }}>
@@ -183,7 +186,7 @@ function GalleryModal({
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <img src={item.url} alt={item.title} className="w-full h-full object-cover" />
+                <Image src={item.url} alt={item.title} fill sizes="48px" className="object-cover" />
               </motion.button>
             ))}
           </div>
@@ -271,10 +274,12 @@ export default function Gallery() {
                     }
                   }}
                 >
-                  <img
+                  <Image
                     src={item.url}
                     alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover"
                     loading="lazy"
                   />
                   {/* Hover overlay */}
