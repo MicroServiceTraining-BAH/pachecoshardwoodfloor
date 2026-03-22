@@ -1,12 +1,14 @@
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Products from "./components/Products";
-import Gallery from "./components/Gallery";
-import About from "./components/About";
-import Testimonials from "./components/Testimonials";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import ChatWidget from "./components/ChatWidget";
+
+const Products = dynamic(() => import("./components/Products"));
+const Gallery = dynamic(() => import("./components/Gallery"));
+const About = dynamic(() => import("./components/About"));
+const Testimonials = dynamic(() => import("./components/Testimonials"));
+const Contact = dynamic(() => import("./components/Contact"));
+const Footer = dynamic(() => import("./components/Footer"));
+const ChatWidget = dynamic(() => import("./components/ChatWidget"));
 
 export default function Home() {
   return (
