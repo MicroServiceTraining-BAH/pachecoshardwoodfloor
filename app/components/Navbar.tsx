@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const navLinks = [
   { label: "Home",      href: "#home" },
@@ -16,9 +16,21 @@ export default function Navbar() {
   const [open, setOpen]         = useState(false);
   const [active, setActive]     = useState("Home");
   const [scrolled, setScrolled] = useState(false);
+  const clickScrolling           = useRef(false);
+  const scrollEndTimer           = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      // Clear the flag once scrolling has fully stopped
+      if (clickScrolling.current) {
+        if (scrollEndTimer.current) clearTimeout(scrollEndTimer.current);
+        scrollEndTimer.current = setTimeout(() => {
+          clickScrolling.current = false;
+        }, 150);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -32,7 +44,7 @@ export default function Navbar() {
       if (!el) return;
       const obs = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !clickScrolling.current) {
             const link = navLinks.find((l) => l.href === `#${id}`);
             if (link) setActive(link.label);
           }
@@ -73,7 +85,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#home"
-          onClick={() => setActive("Home")}
+          onClick={() => { clickScrolling.current = true; setActive("Home"); }}
           style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
         >
           <img
@@ -89,7 +101,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setActive(link.label)}
+              onClick={() => { clickScrolling.current = true; setActive(link.label); }}
               className={`nav-link${active === link.label ? " nav-active" : ""}`}
             >
               {link.label}
@@ -99,7 +111,7 @@ export default function Navbar() {
           {/* FREE QUOTE button */}
           <a
             href="#contact"
-            onClick={() => setActive("Contact")}
+            onClick={() => { clickScrolling.current = true; setActive("Contact"); }}
             className="nav-cta"
           >
             Free Quote
@@ -129,7 +141,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => { setActive(link.label); setOpen(false); }}
+              onClick={() => { clickScrolling.current = true; setActive(link.label); setOpen(false); }}
               style={{
                 display: "block",
                 padding: "0.75rem 0",
@@ -148,7 +160,7 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
-            onClick={() => { setActive("Contact"); setOpen(false); }}
+            onClick={() => { clickScrolling.current = true; setActive("Contact"); setOpen(false); }}
             className="nav-cta"
             style={{ display: "block", marginTop: "1.25rem", textAlign: "center" }}
           >
