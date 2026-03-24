@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 const Products = dynamic(() => import("./components/Products"));
 const Gallery = dynamic(() => import("./components/Gallery"));
 const About = dynamic(() => import("./components/About"));
+const Awards = dynamic(() => import("./components/Awards"));
 const Testimonials = dynamic(() => import("./components/Testimonials"));
 const Contact = dynamic(() => import("./components/Contact"));
 const Footer = dynamic(() => import("./components/Footer"));
@@ -19,6 +20,7 @@ export default function Home() {
         <Products />
         <Gallery />
         <About />
+        <Awards />
         <Testimonials />
         <Contact />
       </main>
