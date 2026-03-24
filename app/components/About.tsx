@@ -6,6 +6,7 @@ export default function About() {
         background: "var(--bg-warm)",
         padding: "5rem 2rem",
         borderTop: "1px solid var(--border)",
+        scrollMarginTop: "160px",
       }}
     >
       <div style={{ maxWidth: "1120px", margin: "0 auto" }}>

@@ -11,7 +11,7 @@ const services = [
 
 export default function Hero() {
   return (
-    <section id="home">
+    <section id="home" style={{ scrollMarginTop: "160px" }}>
       {/* Hero intro — two columns: text left, photo right */}
       <div
         className="grid md:grid-cols-2"
@@ -182,7 +182,7 @@ export default function Hero() {
       </div>
 
       {/* Service panels */}
-      <div id="services" className="grid grid-cols-2 md:grid-cols-4 md:h-[300px]">
+      <div id="services" className="grid grid-cols-2 md:grid-cols-4 md:h-[300px]" style={{ scrollMarginTop: "160px" }}>
         {services.map((svc) => (
           <a
             key={svc.label}

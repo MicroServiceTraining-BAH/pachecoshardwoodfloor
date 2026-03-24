@@ -209,6 +209,7 @@ export default function Gallery() {
         background: "var(--bg-page)",
         padding: "5rem 2rem",
         borderBottom: "1px solid var(--border)",
+        scrollMarginTop: "160px",
       }}
     >
       <div style={{ maxWidth: "1120px", margin: "0 auto" }}>

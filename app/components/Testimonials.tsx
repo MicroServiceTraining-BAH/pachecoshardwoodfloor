@@ -52,6 +52,7 @@ export default function Testimonials() {
         padding: "5.5rem 2rem",
         borderTop: "1px solid rgba(154,110,40,0.3)",
         borderBottom: "1px solid rgba(154,110,40,0.3)",
+        scrollMarginTop: "160px",
       }}
     >
       <div style={{ maxWidth: "1120px", margin: "0 auto" }}>

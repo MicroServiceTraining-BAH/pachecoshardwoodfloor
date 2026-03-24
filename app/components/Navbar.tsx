@@ -42,8 +42,8 @@ export default function Navbar() {
         window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
       if (atBottom) { setActive("Contact"); return; }
 
-      // The "trigger line" sits 40% from the top of the visible viewport
-      const triggerY = window.scrollY + window.innerHeight * 0.4;
+      // A section becomes active the moment its top clears the navbar (140px + small buffer)
+      const triggerY = window.scrollY + 160;
 
       // Walk nav links in order; last one whose anchor top ≤ triggerY wins
       let current = navLinks[0].label;
