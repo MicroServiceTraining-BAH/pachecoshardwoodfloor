@@ -22,8 +22,6 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-
-      // Clear the flag once scrolling has fully stopped
       if (clickScrolling.current) {
         if (scrollEndTimer.current) clearTimeout(scrollEndTimer.current);
         scrollEndTimer.current = setTimeout(() => {
@@ -36,26 +34,31 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
-    const observers: IntersectionObserver[] = [];
+    const updateActive = () => {
+      if (clickScrolling.current) return;
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !clickScrolling.current) {
-            const link = navLinks.find((l) => l.href === `#${id}`);
-            if (link) setActive(link.label);
-          }
-        },
-        { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
+      // At the very bottom of the page → always Contact
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
+      if (atBottom) { setActive("Contact"); return; }
 
-    return () => observers.forEach((obs) => obs.disconnect());
+      // The "trigger line" sits 40% from the top of the visible viewport
+      const triggerY = window.scrollY + window.innerHeight * 0.4;
+
+      // Walk nav links in order; last one whose anchor top ≤ triggerY wins
+      let current = navLinks[0].label;
+      for (const { href, label } of navLinks) {
+        const el = document.getElementById(href.replace("#", ""));
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (triggerY >= top) current = label;
+      }
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", updateActive, { passive: true });
+    updateActive(); // set correct state on mount
+    return () => window.removeEventListener("scroll", updateActive);
   }, []);
 
   return (
