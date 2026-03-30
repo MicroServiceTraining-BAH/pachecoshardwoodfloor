@@ -20,18 +20,42 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Pacheco's Hardwood Floors | Stafford, VA",
   description:
-    "Family-owned hardwood floor installation, refinishing & custom designs serving Stafford, VA and Northern Virginia since 2021. Call for a free quote: 571-575-1570.",
+    "Family-owned hardwood floor installation, refinishing & custom designs serving Stafford, VA and Northern Virginia since 2021. Call for a free quote: 571-383-5946.",
   keywords: [
+    // Services
+    "hardwood floor installation",
+    "hardwood floor refinishing",
+    "sand and refinish hardwood floors",
+    "custom hardwood floor designs",
+    "LVP installation",
+    "luxury vinyl plank flooring",
+    "tile installation",
+    "stair installation",
+    "stair rail repair",
+    "flooring contractor",
+    // Local — primary
     "hardwood floors Stafford VA",
-    "hardwood floor installation Northern Virginia",
-    "floor refinishing Stafford",
-    "sand and refinish hardwood",
-    "custom hardwood designs",
-    "stair rail repair Virginia",
-    "hardwood flooring contractor",
+    "hardwood floor installation Stafford Virginia",
+    "floor refinishing Stafford VA",
+    "flooring company Stafford VA",
+    // Local — surrounding areas
+    "hardwood floors Fredericksburg VA",
+    "hardwood floor installation Woodbridge VA",
+    "flooring contractor Manassas VA",
+    "hardwood floors Dumfries VA",
+    "floor refinishing Quantico VA",
+    "hardwood flooring Northern Virginia",
+    "hardwood floors Prince William County",
+    "hardwood floors Spotsylvania VA",
+    // Intent
+    "free flooring quote Northern Virginia",
+    "affordable hardwood flooring Virginia",
   ],
   authors: [{ name: "Pacheco's Hardwood Floors" }],
   metadataBase: new URL("https://pachecoshardwoodfloor.vercel.app"),
+  alternates: {
+    canonical: "https://pachecoshardwoodfloor.vercel.app",
+  },
   openGraph: {
     title: "Pacheco's Hardwood Floors | Stafford, VA",
     description:
@@ -57,12 +81,16 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
     "name": "Pacheco's Hardwood Floors",
-    "image": "https://pachecoshardwoodfloor.vercel.app/hw-cherry-foyer.jpg",
+    "image": [
+      "https://pachecoshardwoodfloor.vercel.app/hw-cherry-foyer.jpg",
+      "https://pachecoshardwoodfloor.vercel.app/hw-oak-fireplace.jpg",
+      "https://pachecoshardwoodfloor.vercel.app/refinish-before-after-kitchen.jpg",
+    ],
     "description": "Family-owned hardwood floor installation, refinishing, and custom designs serving Stafford, VA and Northern Virginia since 2021.",
     "url": "https://pachecoshardwoodfloor.vercel.app",
-    "telephone": "571-383-5946",
+    "telephone": "+15713835946",
     "email": "pachecoshardwoodfloor@gmail.com",
     "address": {
       "@type": "PostalAddress",
@@ -77,9 +105,41 @@ export default function RootLayout({
       "latitude": 38.4721,
       "longitude": -77.4605,
     },
-    "areaServed": {
-      "@type": "State",
-      "name": "Northern Virginia",
+    "areaServed": [
+      { "@type": "City", "name": "Stafford", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+      { "@type": "City", "name": "Fredericksburg", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+      { "@type": "City", "name": "Woodbridge", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+      { "@type": "City", "name": "Manassas", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+      { "@type": "City", "name": "Dumfries", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+      { "@type": "City", "name": "Quantico", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+      { "@type": "City", "name": "Spotsylvania", "containedInPlace": { "@type": "State", "name": "Virginia" } },
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "07:00",
+        "closes": "18:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "15:00",
+      },
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Flooring Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardwood Floor Installation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hardwood Floor Refinishing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sand and Refinish" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Luxury Vinyl Plank (LVP) Installation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tile Installation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stair Installation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Hardwood Designs" } },
+      ],
     },
     "priceRange": "$$",
     "aggregateRating": {
